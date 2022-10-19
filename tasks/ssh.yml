@@ -1,4 +1,5 @@
 - name: Ensure .ssh directory exists.
+  become_user: sarthikg
   file:
     dest: "{{ dest_key | dirname }}"
     mode: 0700
@@ -8,6 +9,7 @@
     - install
     - ssh
 - name: Install ssh key
+  become_user: sarthikg
   copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
@@ -17,6 +19,7 @@
     - install
     - ssh
 - name: Install ssh key public
+  become_user: sarthikg
   copy:
     src: "{{ source_key }}.pub"
     dest: "{{ dest_key }}.pub"
@@ -25,10 +28,10 @@
     - dotfiles
     - install
     - ssh
-- name: Set authorized key took from file
-  authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
-    state: present
-    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
-  with_fileglob:
-    - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+# - name: Set authorized key took from file
+#   authorized_key:
+#     user: "sarthikg"
+#     state: present
+#     key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+#   with_fileglob:
+#     - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"

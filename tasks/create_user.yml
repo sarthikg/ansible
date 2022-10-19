@@ -1,0 +1,20 @@
+# - name: Change password of Sudo
+#   ansible.builtin.user:
+#     name: root
+#     state: present
+#     password: password
+
+- name: Create group "sarthikg"
+  group:
+    name: sarthikg
+    gid: 1000
+    state: present
+  tags:
+    - user
+- name: Create user "sarthikg" in group "sarthikg"
+  ansible.builtin.user:
+    name: sarthikg
+    uid: 1000
+    group: sarthikg
+  tags:
+    - user

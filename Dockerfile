@@ -24,11 +24,14 @@ FROM base AS prime
 # Accepting tags argument when building docker
 ARG TAGS
 
+# ARG USER=sarthikg
+
 # Create a new group with a group-id of 1000
-RUN addgroup --gid 1000 sarthikg
+# RUN addgroup --gid 1000 sarthikg
 
 # Create a new user named `sarthikg` under the group-id of 1000, with a user-id of 1000, and with no password.
-RUN adduser --gecos sarthikg --uid 1000 --gid 1000 --disabled-password sarthikg
+RUN adduser --uid 1000 --disabled-password sarthikg
+# RUN usermod -aG sudo sarthikg
 
 # Switch to the user of `sarthikg`
 USER sarthikg
@@ -43,4 +46,4 @@ FROM prime
 COPY . .
 
 # Execute the ansible-playbook command
-CMD ["sh", "-c", "ansible-playbook $TAGS local.yml --ask-become-pass --ask-vault-pass"]
+CMD ["sh", "-c", "ansible-playbook $TAGS local.yml --ask-vault-pass"]
