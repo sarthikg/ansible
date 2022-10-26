@@ -1,6 +1,3 @@
-#Oh-My-Zsh Installation Directory
-export ZSH="/Users/sarthikg/.oh-my-zsh"
-
 #Theme Customization
 ZSH_THEME="bliss"
 
@@ -10,7 +7,7 @@ MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 alias ls="ls --color=always"
 
 #Setup for Bliss dircolors (all platforms)
-eval `dircolors ~/.oh-my-zsh/bliss-dircolors/bliss.dircolors`
+eval `dircolors ~/.sarthik/bliss-dircolors/bliss.dircolors`
 
 #Disabled tracking of files under VCS to improve repo speeds
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -23,5 +20,16 @@ plugins=(thefuck zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-
 
 source $ZSH/oh-my-zsh.sh
 
-#Environment Variables
-export PATH="$PATH:$HOME/.spicetify"
+# Function for easily adding new directories to Path
+addToPATH () {
+  case ":$PATH:" in
+    *":$1:"*) :;; # already there
+    *) PATH="$1:$PATH";; # or PATH="$PATH:$1"
+  esac
+}
+
+# Adding directories to Path
+addToPATH $HOME/.local/bin
+
+# Enabling instant-mode for thefuck
+eval $(thefuck --alias --enable-experimental-instant-mode)
