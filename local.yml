@@ -19,3 +19,4 @@
     - include: tasks/git.yml
     - include: tasks/node.yml
     - include: tasks/npm.yml
+    # TODO: Add setup for python, pyenv

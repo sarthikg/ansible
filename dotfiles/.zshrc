@@ -30,6 +30,8 @@ addToPATH () {
 
 # Adding directories to Path
 addToPATH $HOME/.local/bin
+addToPATH $HOME/.local/.npm-global/bin
 
 # Enabling instant-mode for thefuck
 eval $(thefuck --alias --enable-experimental-instant-mode)
+export N_PREFIX=$HOME/.n
