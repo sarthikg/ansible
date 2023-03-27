@@ -1,0 +1,6 @@
+# Cache
+.vagrant/
+.cache/
+
+# Secrets
+vault_secret.sh
