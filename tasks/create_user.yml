@@ -1,9 +1,3 @@
-# - name: Change password of Sudo
-#   ansible.builtin.user:
-#     name: root
-#     state: present
-#     password: password
-
 - name: Create group "sarthikg"
   group:
     name: sarthikg

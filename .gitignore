@@ -4,3 +4,9 @@
 
 # Secrets
 vault_secret.sh
+
+# Dev Environment
+.sarthik/
+
+# Prod Configs
+.oh-my-installer

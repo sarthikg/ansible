@@ -14,15 +14,7 @@ Vagrant.configure("2") do |config|
 
   # Commands to be run
   config.vm.provision "shell", inline: <<-SHELL
-    ./init.sh
+    ./dev.sh
   SHELL
-
-  # Vagrant.configure("2") do |config|
-  #   config.vm.provision "ansible" do |ansible|
-  #     ansible.playbook = "local.yml"
-  #     ansible.ask_become_pass = true
-  #     ansible.ask_vault_pass = true
-  #   end
-  # end
 
 end

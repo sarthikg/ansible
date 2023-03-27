@@ -13,7 +13,7 @@
         - install
         - core
   tasks:
-    # - include: tasks/create_user.yml
+    - include: tasks/create_user.yml
     - include: tasks/ssh.yml
     - include: tasks/zsh.yml
     # - include: tasks/git.yml
