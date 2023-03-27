@@ -15,5 +15,10 @@ sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update -y
 sudo apt-get install -y curl git software-properties-common ansible
 
-## Pull Ansible
-sudo ansible-pull -U https://github.com/sarthikg/ansible.git
+## Copy Assets to .sarthik
+mkdir .sarthik
+cp -RT  ./* .sarthik/
+cd .sarthik
+
+## Run Ansible Playbook
+# ansible-playbook local.yml --vault-password-file ./vault_secret.sh
