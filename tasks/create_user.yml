@@ -1,14 +1,16 @@
 - name: Create group "sarthikg"
+  become: true
   group:
     name: sarthikg
-    gid: 1000
+    gid: 1002
     state: present
   tags:
     - user
 - name: Create user "sarthikg" in group "sarthikg"
+  become: true
   ansible.builtin.user:
     name: sarthikg
-    uid: 1000
+    uid: 1002
     group: sarthikg
   tags:
     - user

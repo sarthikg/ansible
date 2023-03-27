@@ -16,14 +16,7 @@ sudo apt-get update -y
 sudo apt-get install -y curl git software-properties-common ansible
 
 ## Copy Assets to .sarthik
-mkdir .sarthik
-cp -r ./tasks ./.sarthik/
-cp -r ./.ssh ./.sarthik/
-cp -r ./.oh-my-zsh ./.sarthik/
-cp -r ./dotfiles ./.sarthik/
-cp ./local.yml ./.sarthik/
-cp ./vault_secret.sh ./.sarthik/  
-cd .sarthik
+cd ./.sarthik
 
 ## Run Ansible Playbook
 ansible-playbook local.yml --vault-password-file ./vault_secret.sh

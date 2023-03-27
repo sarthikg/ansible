@@ -10,11 +10,11 @@ Vagrant.configure("2") do |config|
   end
 
   # Synced Folders
-  config.vm.synced_folder ".", "/home/vagrant"
+  config.vm.synced_folder ".", "/home/vagrant/.sarthik"
 
   # Commands to be run
   config.vm.provision "shell", inline: <<-SHELL
-    ./dev.sh
+    ./.sarthik/dev.sh
   SHELL
 
 end

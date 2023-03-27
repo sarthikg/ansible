@@ -3,33 +3,30 @@
   apt: name=zsh
   tags: &tags_for_zsh_tasks ["install", "productivity", "dotfiles", "zsh"]
 
-# - name: Set login shell of user sarthikg to `/usr/bin/zsh` with `usermod`
-#   ansible.builtin.command: usermod --shell /usr/bin/zsh vagrant
-#   become: true
-#   changed_when: false
-
-- name: Change shell to zsh
+- name: Set login shell of user sarthikg to `/usr/bin/zsh` with `usermod`
+  ansible.builtin.command: usermod --shell /usr/bin/zsh sarthikg
   become: true
-  # become_user: sarthikg
-  shell: chsh -s $(which zsh)
+  changed_when: false
   tags: *tags_for_zsh_tasks
 
-# - name: Check that the somefile.conf exists
-#   # become_user: sarthikg
-#   stat:
-#     path: /home/sarthikg/.oh-my-zsh
-#   register: oh_my_stats
-#   tags: *tags_for_zsh_tasks
+- name: Copy zshrc config file
+  become: true
+  copy:
+    dest: "/home/sarthikg/.zshrc"
+    src: "./dotfiles/.zshrc"
+  tags: *tags_for_zsh_tasks
 
 - name: Oh-My-Zsh
-  # become_user: sarthikg
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  become: true
+  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > /home/sarthikg/.oh-my-installer && chmod +x /home/sarthikg/.oh-my-installer && /home/sarthikg/.oh-my-installer
   tags: *tags_for_zsh_tasks
-  # when: oh_my_stats.stat.exists == False
 
 - name: Install zsh-autosuggestions
-  # become_user: sarthikg
+  become: true
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
-    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    dest: "/home/sarthikg/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags: *tags_for_zsh_tasks
+# TO BE DONE
+# 1. Install thefuck
+# 2. Install bliss theme

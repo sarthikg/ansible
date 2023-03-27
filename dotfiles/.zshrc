@@ -4,7 +4,7 @@ ZSH_THEME="bliss"
 #Setup for Bliss dircolors (only macos)
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
-alias ls="ls --color=always"
+# alias ls="ls --color=always"
 
 #Setup for Bliss dircolors (all platforms)
 eval `dircolors ~/.sarthik/bliss-dircolors/bliss.dircolors`

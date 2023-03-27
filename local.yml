@@ -1,7 +1,7 @@
 - hosts: localhost
   vars:
     source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    dest_key: "/home/sarthikg/.ssh/id_rsa"
   pre_tasks:
     - name: Update Apt
       become: true
@@ -16,6 +16,6 @@
     - include: tasks/create_user.yml
     - include: tasks/ssh.yml
     - include: tasks/zsh.yml
-    # - include: tasks/git.yml
-    # - include: tasks/node.yml
-    # - include: tasks/npm.yml
+    - include: tasks/git.yml
+    - include: tasks/node.yml
+    - include: tasks/npm.yml
