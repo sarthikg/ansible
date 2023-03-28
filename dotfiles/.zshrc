@@ -1,19 +1,25 @@
 #Theme Customization
 ZSH_THEME="bliss"
 
+# Export Variables
+export ZSH="$HOME/.oh-my-zsh"
+export LANG="en_US.UTF.8"
+
 #Setup for Bliss dircolors (only macos)
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
-# alias ls="ls --color=always"
+
+alias lsah="lsd -lsah --icon=never"
 
 #Setup for Bliss dircolors (all platforms)
 eval `dircolors ~/.sarthik/bliss-dircolors/bliss.dircolors`
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #Disabled tracking of files under VCS to improve repo speeds
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 #Plugins
-plugins=(thefuck zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-history-substring-search dirhistory)
+plugins=(thefuck zsh-autosuggestions zsh-syntax-highlighting you-should-use)
 
 # Extra Plugins
 # plugins = (auto-notify ufw docker git-prompt)
@@ -30,8 +36,17 @@ addToPATH () {
 
 # Adding directories to Path
 addToPATH $HOME/.local/bin
+addToPATH $HOME/.npm/bin
 addToPATH $HOME/.local/.npm-global/bin
+
+# Adding directories to Path (Mac only)
+addToPATH $HOME/Library/Python/3.10/bin
+addToPATH /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
 # Enabling instant-mode for thefuck
 eval $(thefuck --alias --enable-experimental-instant-mode)
+
+# Adding Custom Path for N
+addToPATH $HOME/.n/bin
 export N_PREFIX=$HOME/.n
+
