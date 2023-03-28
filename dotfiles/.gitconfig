@@ -1,0 +1,10 @@
+[user]
+  name = Sarthik Gupta
+  email = sarthikg@icloud.com
+
+[alias]
+  ac = !git add -A && git commit -m
+  acp = !git add -A && git commit -m "$0" && git push && :
+
+[commit]
+  gpgsign = true
