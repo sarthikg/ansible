@@ -8,34 +8,30 @@
 
 - name: Add NPM Prefix
   shell: "mkdir -p {{home}}/.local/.npm-global"
-  become: true
+  become: false
   tags:
     - install
     - node
 
 - name: Add NPM to PATH
   shell: "PATH={{home}}/.local/.npm-global/bin:$PATH"
+  become: false
   tags:
     - install
     - node
 
 - name: Configure NPM Global Settings
   shell: "npm config set prefix '{{home}}/.local/.npm-global'"
+  become: false
   tags:
     - install
     - node
 
 - name: Install N
-  become: true
+  become: false
   npm:
     name: n
     global: yes
-  tags:
-    - install
-    - node
-
-- name: Install Node 18
-  shell: exec $SHELL && n 18
   tags:
     - install
     - node

@@ -1,5 +1,5 @@
 - name: Ensure .ssh directory exists.
-  become: true
+  become: false
   file:
     dest: "{{ home }}/.ssh"
     mode: 0700
@@ -10,7 +10,7 @@
     - ssh
 
 - name: Install SSH private key
-  become: true
+  become: false
   copy:
     src: "{{ current }}/.ssh/id_rsa"
     dest: "{{ home }}/.ssh/id_rsa"
@@ -21,7 +21,7 @@
     - ssh
 
 - name: Install SSH public key
-  become: true
+  become: false
   copy:
     src: "{{ current }}/.ssh/id_rsa.pub"
     dest: "{{ home }}/.ssh/id_rsa.pub"

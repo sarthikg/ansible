@@ -18,4 +18,4 @@ sudo apt-get install -y curl git software-properties-common ansible
 
 ## Run Ansible Playbook
 cd ./.sarthik
-ansible-playbook local.yml --vault-password-file ./vault_secret.sh
+sudo su -c "ansible-playbook local.yml --vault-password-file ./vault_secret.sh --verbose" vagrant

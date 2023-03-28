@@ -18,14 +18,6 @@ export LANG="en_US.UTF.8"
 #Disabled tracking of files under VCS to improve repo speeds
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-#Plugins
-plugins=(thefuck zsh-autosuggestions zsh-syntax-highlighting you-should-use)
-
-# Extra Plugins
-# plugins = (auto-notify ufw docker git-prompt)
-
-source $ZSH/oh-my-zsh.sh
-
 # Function for easily adding new directories to Path
 addToPATH () {
   case ":$PATH:" in
@@ -43,8 +35,13 @@ addToPATH $HOME/.local/.npm-global/bin
 addToPATH $HOME/Library/Python/3.10/bin
 addToPATH /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
+#Plugins
+plugins=(thefuck zsh-autosuggestions zsh-syntax-highlighting you-should-use)
+
 # Enabling instant-mode for thefuck
 eval $(thefuck --alias --enable-experimental-instant-mode)
+
+source $ZSH/oh-my-zsh.sh
 
 # Adding Custom Path for N
 addToPATH $HOME/.n/bin

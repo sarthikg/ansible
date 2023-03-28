@@ -10,6 +10,7 @@
   tags: *tags_for_zsh_tasks
 
 - name: Ensure temp directory exists.
+  become: false
   file:
     dest: "{{home}}/temp"
     mode: 0777
@@ -17,17 +18,28 @@
   tags: *tags_for_zsh_tasks
 
 - name: Install Oh-My-Zsh
+  become: false
   shell: "curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > {{home}}/temp/.oh-my-installer && chmod +x {{home}}/temp/.oh-my-installer && {{home}}/temp/.oh-my-installer"
   tags: *tags_for_zsh_tasks
 
 - name: Copy .zshrc config
+  become: false
   copy:
     dest: "{{home}}/.zshrc"
     src: "./dotfiles/.zshrc"
   tags: *tags_for_zsh_tasks
 
 - name: Install zsh-autosuggestions plugin
+  become: false
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
     dest: "{{home}}/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags: *tags_for_zsh_tasks
+
+- name: Install zsh-syntax-highlighting plugin
+  become: false
+  shell: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git {{home}}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+
+- name: Install you-should-use plugin
+  become: false
+  shell: "git clone https://github.com/MichaelAquilina/zsh-you-should-use.git {{home}}/.oh-my-zsh/plugins/you-should-use"

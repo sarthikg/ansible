@@ -9,17 +9,10 @@
 # Add installation & configuration for pyenv
 
 - name: Install thefuck
-  become: true
+  become: false
   ansible.builtin.pip:
     name: thefuck
     executable: pip
-  tags:
-    - install
-    - python
-
-- name: Configure fuck
-  become: true
-  shell: fuck && fuck
   tags:
     - install
     - python

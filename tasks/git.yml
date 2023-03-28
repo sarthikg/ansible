@@ -1,4 +1,5 @@
 - name: Install .gitconfig file
+  become: false
   copy:
     dest: "{{home}}/.gitconfig"
     src: "./dotfiles/.gitconfig"
