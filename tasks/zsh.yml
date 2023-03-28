@@ -9,28 +9,25 @@
   changed_when: false
   tags: *tags_for_zsh_tasks
 
+- name: Ensure temp directory exists.
+  file:
+    dest: "{{home}}/temp"
+    mode: 0777
+    state: directory
+  tags: *tags_for_zsh_tasks
+
+- name: Install Oh-My-Zsh
+  shell: "curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > {{home}}/temp/.oh-my-installer && chmod +x {{home}}/temp/.oh-my-installer && {{home}}/temp/.oh-my-installer"
+  tags: *tags_for_zsh_tasks
+
 - name: Copy .zshrc config
   copy:
     dest: "{{home}}/.zshrc"
     src: "./dotfiles/.zshrc"
   tags: *tags_for_zsh_tasks
 
-- name: Ensure temp directory exists.
-  file:
-    dest: "{{home}}/temp"
-    mode: 0777
-    state: directory
-  tags:
-    - temp
-
-- name: Install Oh-My-Zsh
-  shell: "curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > {{home}}/temp/.oh-my-installer && chmod +x {{home}}/temp/.oh-my-installer && {{home}}/temp/.oh-my-installer"
-  tags:
-    - temp
-
 - name: Install zsh-autosuggestions plugin
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
     dest: "{{home}}/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags:
-    - temp
+  tags: *tags_for_zsh_tasks

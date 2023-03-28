@@ -1,12 +1,7 @@
 # Cache
+.ansible/
 .vagrant/
 .cache/
 
 # Secrets
 vault_secret.sh
-
-# Dev Environment
-.sarthik/
-
-# Prod Configs
-.oh-my-installer
