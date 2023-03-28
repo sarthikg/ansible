@@ -3,30 +3,34 @@
   apt: name=zsh
   tags: &tags_for_zsh_tasks ["install", "productivity", "dotfiles", "zsh"]
 
-- name: Set login shell of user sarthikg to `/usr/bin/zsh` with `usermod`
-  ansible.builtin.command: usermod --shell /usr/bin/zsh sarthikg
+- name: Set login shell of user {{user}} to `/usr/bin/zsh` with `usermod`
+  ansible.builtin.command: "usermod --shell /usr/bin/zsh {{user}}"
   become: true
   changed_when: false
   tags: *tags_for_zsh_tasks
 
-- name: Copy zshrc config file
-  become: true
+- name: Copy .zshrc config
   copy:
-    dest: "/home/sarthikg/.zshrc"
+    dest: "{{home}}/.zshrc"
     src: "./dotfiles/.zshrc"
   tags: *tags_for_zsh_tasks
 
-- name: Oh-My-Zsh
-  become: true
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > /home/sarthikg/.oh-my-installer && chmod +x /home/sarthikg/.oh-my-installer && /home/sarthikg/.oh-my-installer
-  tags: *tags_for_zsh_tasks
+- name: Ensure temp directory exists.
+  file:
+    dest: "{{home}}/temp"
+    mode: 0777
+    state: directory
+  tags:
+    - temp
 
-- name: Install zsh-autosuggestions
-  become: true
+- name: Install Oh-My-Zsh
+  shell: "curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > {{home}}/temp/.oh-my-installer && chmod +x {{home}}/temp/.oh-my-installer && {{home}}/temp/.oh-my-installer"
+  tags:
+    - temp
+
+- name: Install zsh-autosuggestions plugin
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
-    dest: "/home/sarthikg/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags: *tags_for_zsh_tasks
-# TO BE DONE
-# 1. Install thefuck
-# 2. Install bliss theme
+    dest: "{{home}}/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags:
+    - temp

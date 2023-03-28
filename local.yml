@@ -1,7 +1,16 @@
 - hosts: localhost
+  # 1. Variables for the ansible-playbook
   vars:
-    source_key: "./.ssh/id_rsa"
-    dest_key: "/home/sarthikg/.ssh/id_rsa"
+    home: "/home/{{user}}"
+    current: "."
+
+  vars_prompt:
+    - name: user
+      prompt: What username is the user being configured for?
+      private: false
+      default: "vagrant"
+
+  # 2. Update Apt as a pre-task
   pre_tasks:
     - name: Update Apt
       become: true
@@ -12,11 +21,10 @@
       tags:
         - install
         - core
+  # 3. Execute all the tasks
   tasks:
-    - include: tasks/create_user.yml
     - include: tasks/ssh.yml
     - include: tasks/zsh.yml
     - include: tasks/git.yml
     - include: tasks/node.yml
-    - include: tasks/npm.yml
-    # TODO: Add setup for python, pyenv
+    - include: tasks/python.yml

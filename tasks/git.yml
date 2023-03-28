@@ -1,19 +1,6 @@
-- name: Git personal setup email
-  become_user: sarthikg
-  become: true
-  git_config:
-    name: user.email
-    scope: global
-    value: "sarthikg@icloud.com"
+- name: Install .gitconfig file
+  copy:
+    dest: "{{home}}/.gitconfig"
+    src: "./dotfiles/.gitconfig"
   tags:
-    - git-personal
-
-- name: Git personal setup name
-  become_user: sarthikg
-  become: true
-  git_config:
-    name: user.name
-    scope: global
-    value: "Sarthik Gupta"
-  tags:
-    - git-personal
+    - git

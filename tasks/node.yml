@@ -1,4 +1,4 @@
-- name: Install nodejs and npm
+- name: Install NodeJS & NPM
   become: true
   apt:
     name: ["nodejs", "npm"]
@@ -6,21 +6,21 @@
     - install
     - node
 
-- name: npmjs prefix
-  shell: mkdir -p /home/sarthikg/.local/.npm-global
+- name: Add NPM Prefix
+  shell: "mkdir -p {{home}}/.local/.npm-global"
   become: true
   tags:
     - install
     - node
 
-- name: add npmjs to path
-  shell: PATH=/home/sarthikg/.local/.npm-global/bin:$PATH
+- name: Add NPM to PATH
+  shell: "PATH={{home}}/.local/.npm-global/bin:$PATH"
   tags:
     - install
     - node
 
-- name: npmjs global settings
-  shell: npm config set prefix '/home/sarthikg/.local/.npm-global'
+- name: Configure NPM Global Settings
+  shell: "npm config set prefix '{{home}}/.local/.npm-global'"
   tags:
     - install
     - node
@@ -34,10 +34,8 @@
     - install
     - node
 
-- name: Install correct version of Node
-  shell: n 18
-  become: true
+- name: Install Node 18
+  shell: exec $SHELL && n 18
   tags:
     - install
     - node
-    - test

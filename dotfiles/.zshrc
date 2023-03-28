@@ -1,19 +1,19 @@
 #Theme Customization
-ZSH_THEME="bliss"
+ZSH_THEME="robbyrussell"
 
 # Export Variables
 export ZSH="$HOME/.oh-my-zsh"
 export LANG="en_US.UTF.8"
 
 #Setup for Bliss dircolors (only macos)
-PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+# PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+# MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
-alias lsah="lsd -lsah --icon=never"
+# alias lsah="lsd -lsah --icon=never"
 
 #Setup for Bliss dircolors (all platforms)
-eval `dircolors ~/.sarthik/bliss-dircolors/bliss.dircolors`
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# eval `dircolors ~/.sarthik/bliss-dircolors/bliss.dircolors`
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #Disabled tracking of files under VCS to improve repo speeds
 DISABLE_UNTRACKED_FILES_DIRTY="true"
