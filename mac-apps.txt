@@ -1,0 +1,15 @@
+AltTab
+Amethyst
+AppCleaner
+CopyClip
+DropOver
+FontBase
+HiddenBar
+Latest
+Logi Options +
+MonitorControl
+RayCast
+Rectangle
+Stats
+TinkerTool
+BetterDisplay
