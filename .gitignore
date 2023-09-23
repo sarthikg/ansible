@@ -1,3 +1,6 @@
+# MacOS BS
+.DS_Store
+
 # Cache
 .ansible/
 .vagrant/
@@ -5,3 +8,4 @@
 
 # Secrets
 vault_secret.sh
+
