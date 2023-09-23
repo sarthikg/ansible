@@ -1,11 +1,5 @@
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 1,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.87514764070510864,
-    "Alpha Component" : 1,
-    "Green Component" : 0.5853118896484375
-  },
+  "Thin Strokes" : 4,
   "Working Directory" : "\/Users\/sarthikg",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -322,7 +316,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.43609619140625
   },
-  "Name" : "Default",
+  "Name" : "Sarthik's Profile",
   "Blinking Cursor" : true,
   "Guid" : "48962BAD-4847-4657-8161-B4B0593AE999",
   "Ansi 8 Color" : {
@@ -358,7 +352,7 @@
     "Green Component" : 0
   },
   "Blur" : true,
-  "Normal Font" : "CascadiaMono-Regular 16",
+  "Normal Font" : "Consolas 15",
   "Vertical Spacing" : 1,
   "Use Underline Color" : false,
   "Ansi 7 Color" : {
@@ -389,7 +383,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.87450981140136719
   },
-  "Transparency" : 0.029172207446808509,
+  "Transparency" : 0.029172207446808505,
   "Background Color" : {
     "Red Component" : 0.086274512112140656,
     "Color Space" : "sRGB",
@@ -409,7 +403,13 @@
   },
   "Columns" : 80,
   "Visual Bell" : true,
-  "Custom Directory" : "No",
   "ASCII Ligatures" : false,
-  "Thin Strokes" : 4
+  "Ansi 5 Color" : {
+    "Red Component" : 1,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.87514764070510864,
+    "Alpha Component" : 1,
+    "Green Component" : 0.5853118896484375
+  },
+  "Custom Directory" : "No"
 }
